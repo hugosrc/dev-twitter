@@ -5,11 +5,15 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/hugosrc/dev-twitter/src/routes"
+
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/users", routes.CreateUser).Methods("POST")
 
 	server := &http.Server{
 		Handler:      router,
